@@ -70,6 +70,26 @@ public class ArbolBinario {
 		}
 	}
 	
+	public void preOrder( NodoArbol nodoActual ) {
+		System.out.print( nodoActual.getValor() + " - " );
+		if( nodoActual.getIzquierdo() != null ) {
+			preOrder( nodoActual.getIzquierdo() );
+		}
+		if( nodoActual.getDerecho() != null ) {
+			preOrder( nodoActual.getDerecho() );
+		}
+	}
+	
+	public void postOrder( NodoArbol nodoActual ) {
+		if( nodoActual.getIzquierdo() != null ) {
+			postOrder( nodoActual.getIzquierdo() );
+		}
+		if( nodoActual.getDerecho() != null ) {
+			postOrder( nodoActual.getDerecho() );
+		}
+		System.out.print( nodoActual.getValor() + " - " );
+	}
+	
 	public NodoArbol getRaiz() {
 		return raiz;
 	}
