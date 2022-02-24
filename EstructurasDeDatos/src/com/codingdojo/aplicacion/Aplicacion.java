@@ -94,10 +94,10 @@ public class Aplicacion {
 		DLL listaNumeros2 = new DLL();
 		
 		NodoDLL nodo1 = new NodoDLL( 1 );
-		NodoDLL nodo2 = new NodoDLL( 1 );
-		NodoDLL nodo3 = new NodoDLL( 1 );
-		NodoDLL nodo4 = new NodoDLL( 1 );
-		NodoDLL nodo5 = new NodoDLL( 1 );
+		NodoDLL nodo2 = new NodoDLL( 2 );
+		NodoDLL nodo3 = new NodoDLL( 3 );
+		NodoDLL nodo4 = new NodoDLL( 4 );
+		NodoDLL nodo5 = new NodoDLL( 5 );
 		
 		listaNumeros1.agregaAlFinal( nodo1 );
 		listaNumeros1.agregaAlFinal( nodo2 );
@@ -105,15 +105,15 @@ public class Aplicacion {
 		listaNumeros1.agregaAlFinal( nodo4 );
 		listaNumeros1.agregaAlFinal( nodo5 );
 		
-		NodoDLL nodo6 = new NodoDLL( 1 );
-		NodoDLL nodo7 = new NodoDLL( 1 );
-		NodoDLL nodo8 = new NodoDLL( 1 );
+		NodoDLL nodo6 = new NodoDLL( 6 );
+		NodoDLL nodo7 = new NodoDLL( 7 );
+		NodoDLL nodo8 = new NodoDLL( 8 );
 		
 		listaNumeros2.agregaAlFinal( nodo6 );
 		listaNumeros2.agregaAlFinal( nodo7 );
 		listaNumeros2.agregaAlFinal( nodo8 );
-		listaNumeros2.agregaAlFinal( listaNumeros1.getHead().getNext().getNext() );
-		listaNumeros2.setLength( 6 );
+		//listaNumeros2.agregaAlFinal( listaNumeros1.getHead().getNext().getNext() );
+		//listaNumeros2.setLength( 6 );
 		
 		boolean existe = existeInterseccion( listaNumeros2, listaNumeros1 );
 		
