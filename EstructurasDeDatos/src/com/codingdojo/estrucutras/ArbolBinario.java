@@ -38,6 +38,63 @@ public class ArbolBinario {
 		}
 	}
 	
+	public void remover( int numero ) {
+		NodoArbol existe = buscaValor( numero );
+		
+		if( existe == null ) {
+			System.out.println( "El nodo no existe en el arbol, no se puede remover." );
+		}
+		else {
+			NodoArbol padre = this.raiz;
+			NodoArbol hijo = this.raiz;
+			
+			if( hijo.getValor() == numero ) {
+				if( padre.getIzquierdo() != null ) {
+					setRaiz( padre.getIzquierdo() );
+					if( padre.getDerecho() != null ) {
+						agregar( padre.getDerecho() );
+					}
+				}
+				else {
+					if( padre.getDerecho() != null ) {
+						setRaiz( padre.getDerecho() );
+					}
+				}
+				
+				padre.setIzquierdo( null );
+				padre.setDerecho( null );
+			}
+			else {
+				while( hijo.getValor() != numero ) {
+					padre = hijo;
+					
+					if( hijo.getValor() > numero ) {
+						hijo = hijo.getIzquierdo();
+					}
+					else {
+						hijo = hijo.getDerecho();
+					}
+				}
+				if( padre.getValor() > numero ) {
+					padre.setIzquierdo( null );
+				}
+				else {
+					padre.setDerecho( null );
+				}
+				
+				if( hijo.getIzquierdo() != null ) {
+					agregar( hijo.getIzquierdo() );
+					hijo.setIzquierdo( null );
+				}
+				if( hijo.getDerecho() != null ) {
+					agregar( hijo.getDerecho() );
+					hijo.setDerecho( null );
+				}
+			}
+			
+		}
+	}
+	
 	public NodoArbol buscaValor( int numero ) {
 		
 		NodoArbol aux = this.raiz;

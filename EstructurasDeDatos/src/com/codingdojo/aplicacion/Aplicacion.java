@@ -1,6 +1,8 @@
 package com.codingdojo.aplicacion;
 
 import com.codingdojo.estrucutras.*;
+
+import java.util.Arrays;
 import java.util.HashMap;
 
 public class Aplicacion {
@@ -87,7 +89,75 @@ public class Aplicacion {
 		
 	}
 	
+	public static void recorridoBinario( int numeros [], ArbolBinario arbolNumeros ) {
+		if ( numeros.length != 0 ) {
+			int centro = numeros.length / 2;
+			// Agregar el numero del centro al arbol
+			System.out.print( numeros[ centro ] + " - " );
+			arbolNumeros.agregar(  new NodoArbol( numeros[ centro ] ) );
+			recorridoBinario(Arrays.copyOfRange( numeros, 0, centro ), arbolNumeros);
+			if( numeros.length != 1 ) {
+				recorridoBinario(Arrays.copyOfRange( numeros, centro + 1, numeros.length ), arbolNumeros);
+			}
+		}
+	}
+	
+	public static int cuentaNodos( NodoArbol nodo ) {
+		if( nodo == null ) {
+			return 0;
+		}
+		else {
+			int nodosIzquierdo = cuentaNodos( nodo.getIzquierdo() );
+			int nodosDerecho = cuentaNodos( nodo.getDerecho() );
+			
+			if( nodosIzquierdo - nodosDerecho >= -1 && nodosIzquierdo - nodosDerecho <= 1 ) {
+				return nodosIzquierdo + nodosDerecho + 1;
+			}
+			else {
+				return -50;
+			}
+			
+		}
+	}
+	
+	
 	public static void main( String args[] ) {
+		
+		ArbolBinario arbolDeNumeros = new ArbolBinario();
+		NodoArbol nodo1 = new NodoArbol( 100 );
+		NodoArbol nodo2 = new NodoArbol( 50 );
+		NodoArbol nodo3 = new NodoArbol( 25 );
+		NodoArbol nodo4 = new NodoArbol( 60 );
+		NodoArbol nodo5 = new NodoArbol( 175 );
+		NodoArbol nodo6 = new NodoArbol( 180 );
+		
+		arbolDeNumeros.agregar( nodo1 );
+		arbolDeNumeros.agregar( nodo2 );
+		arbolDeNumeros.agregar( nodo3 );
+		arbolDeNumeros.agregar( nodo4 );
+		arbolDeNumeros.agregar( nodo5 );
+		arbolDeNumeros.agregar( nodo6 );
+		
+		arbolDeNumeros.remover( 100 );
+		arbolDeNumeros.inOrder( arbolDeNumeros.getRaiz() );
+		/*
+		int numeros [] = {1,2,3,4,5,6,7,8,9,10};
+		ArbolBinario arbolDeNumeros = new ArbolBinario();
+		
+		recorridoBinario( numeros, arbolDeNumeros );
+		arbolDeNumeros.agregar( new NodoArbol( 20 ) );
+		arbolDeNumeros.agregar( new NodoArbol( 30 ) );
+		
+		System.out.print( "\n" );
+		arbolDeNumeros.inOrder( arbolDeNumeros.getRaiz() );
+		System.out.print( "\n" );
+		System.out.println( "Numero de Nodos: " + cuentaNodos(arbolDeNumeros.getRaiz()) );
+		if( cuentaNodos(arbolDeNumeros.getRaiz()) == -50 ) {
+			System.out.println( "El arbol no esta balanceado" );
+		}
+		else {
+			System.out.println( "El arbol si esta balanceado" );
+		}
 		
 		
 		DLL listaNumeros1 = new DLL();
@@ -123,7 +193,7 @@ public class Aplicacion {
 		else {
 			System.out.println( "No existe interseccion entre las listas!" );
 		}
-		/*
+		
 		listaNumeros.imprimePrincipioFin();
 		removerDuplicadosEnDLL( listaNumeros );
 		System.out.print( "\n" );
